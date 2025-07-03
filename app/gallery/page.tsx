@@ -21,21 +21,21 @@ const galleryMoments = [
   {
     id: 1,
     image: "/placeholder.svg?height=400&width=600",
-    title: "Week 12 Victory Celebration",
-    description: "Alex takes the crown for the third consecutive week! 🏆",
-    date: "2024-01-24",
-    location: "Central Park Track",
-    likes: 15,
+    title: "Week 3 Victory Celebration",
+    description: "Troy takes it for the 3rd consecutive week! 🏆",
+    date: "2025-07-02",
+    location: "Rashida Towers, Mabua Road",
+    likes: 30,
     comments: 8,
-    tags: ["victory", "celebration", "week12"],
+    tags: ["victory", "celebration", "week3"],
   },
   {
     id: 2,
     image: "/placeholder.svg?height=400&width=600",
-    title: "Morning Motivation",
-    description: "The squad ready to conquer another Wednesday morning run!",
-    date: "2024-01-24",
-    location: "Starting Line",
+    title: "Rising Star Debut Run",
+    description: "Brennan finishes 5th on her first appearance!",
+    date: "2025-07-02",
+    location: "Rashida Towers Entrance Gate",
     likes: 23,
     comments: 12,
     tags: ["teamwork", "motivation", "squad"],
@@ -43,46 +43,13 @@ const galleryMoments = [
   {
     id: 3,
     image: "/placeholder.svg?height=400&width=600",
-    title: "Photo Finish Drama",
-    description: "Sarah and Mike in an epic sprint to the finish line!",
-    date: "2024-01-17",
+    title: "Finishing Drama",
+    description: "Denis and Astrav in an epic sprint to the finish line!",
+    date: "2025-07-02",
     location: "Finish Line",
     likes: 31,
     comments: 18,
     tags: ["dramatic", "sprint", "competition"],
-  },
-  {
-    id: 4,
-    image: "/placeholder.svg?height=400&width=600",
-    title: "Post-Run Recovery",
-    description: "Nothing beats the post-run stretch session with the team.",
-    date: "2024-01-17",
-    location: "Recovery Zone",
-    likes: 19,
-    comments: 7,
-    tags: ["recovery", "stretching", "teamwork"],
-  },
-  {
-    id: 5,
-    image: "/placeholder.svg?height=400&width=600",
-    title: "New Personal Best!",
-    description: "Emma celebrating her first sub-25 minute 5K! 🎉",
-    date: "2024-01-10",
-    location: "Track",
-    likes: 28,
-    comments: 15,
-    tags: ["personal-best", "celebration", "milestone"],
-  },
-  {
-    id: 6,
-    image: "/placeholder.svg?height=400&width=600",
-    title: "Rainy Day Warriors",
-    description: "Rain or shine, the IntLeaderBoard 25 never stops!",
-    date: "2024-01-03",
-    location: "Rainy Track",
-    likes: 42,
-    comments: 22,
-    tags: ["dedication", "weather", "warriors"],
   },
 ];
 
@@ -107,7 +74,7 @@ export default function GalleryPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mt-4 mb-12"
           >
             <h1 className="text-5xl font-bold text-white mb-4">
               📸 Run Moments
@@ -115,7 +82,7 @@ export default function GalleryPage() {
             <p className="text-xl text-gray-300 mb-6">
               Capturing the spirit, sweat, and victories of IntLeaderBoard 25
             </p>
-            <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3">
+            <Button className="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3">
               <Upload className="w-5 h-5 mr-2" />
               Upload New Moment
             </Button>
@@ -250,7 +217,7 @@ export default function GalleryPage() {
           >
             <Button
               variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 px-8 py-3 bg-transparent"
+              className="cursor-pointer border-white/30 text-white hover:bg-white/10 px-8 py-3 bg-transparent"
             >
               Load More Moments
             </Button>

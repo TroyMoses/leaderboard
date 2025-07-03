@@ -33,54 +33,44 @@ import { Navigation } from "@/components/navigation";
 const existingAgreements = [
   {
     id: 1,
-    challenger: "Alex Johnson",
-    challenged: "Sarah Chen",
-    bet: "$20",
-    condition: "First to reach top 3 for 3 consecutive weeks",
+    challenger: "Iqra Abdi",
+    challenged: "Daniel Astrav",
+    bet: "UGX 50,000",
+    condition: "First to finish the race",
     status: "active",
-    createdAt: "2024-01-15",
-    deadline: "2024-02-15",
+    createdAt: "2025-07-03",
+    deadline: "2025-07-09",
   },
   {
     id: 2,
-    challenger: "Mike Rodriguez",
-    challenged: "Emma Wilson",
-    bet: "Buy coffee for a week",
-    condition: "Beat the other in next 2 runs",
+    challenger: "Caleb",
+    challenged: "Daniel Astrav",
+    bet: "UGX 50,000",
+    condition: "First to reach the finishing line",
     status: "completed",
-    winner: "Mike Rodriguez",
-    createdAt: "2024-01-10",
-    completedAt: "2024-01-24",
+    winner: "Daniel Astrav",
+    createdAt: "2025-07-30",
+    completedAt: "2025-07-02",
   },
   {
     id: 3,
-    challenger: "James Brown",
-    challenged: "Lisa Garcia",
-    bet: "$15",
-    condition: "Improve position by 3 ranks in next month",
+    challenger: "Denis Hacker",
+    challenged: "Mercy & Nina",
+    bet: "Buy breakfast for a week",
+    condition: "Participate and finish the next race",
     status: "pending",
-    createdAt: "2024-01-20",
-    deadline: "2024-02-20",
+    createdAt: "2025-07-03",
+    deadline: "2025-07-09",
   },
 ];
 
 const runners = [
-  "Alex Johnson",
-  "Sarah Chen",
-  "Mike Rodriguez",
-  "Emma Wilson",
-  "James Brown",
-  "Lisa Garcia",
-  "Ryan Davis",
-  "Anna Martinez",
-  "Chris Taylor",
-  "Maya Patel",
-  "Kevin Lee",
-  "Sophie Turner",
-  "Daniel White",
-  "Tom Wilson",
-  "Lisa Park",
-  "David Kim",
+  "Troy Legacy",
+  "Daniel Magero",
+  "Denis Hacker",
+  "Daniel Astrav",
+  "Brennan Baingana",
+  "Caleb",
 ];
 
 export default function AgreementsPage() {
@@ -153,7 +143,7 @@ export default function AgreementsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mt-4 mb-12"
           >
             <h1 className="text-5xl font-bold text-white mb-4">
               🤝 Runner Agreements
@@ -163,7 +153,7 @@ export default function AgreementsPage() {
             </p>
             <Button
               onClick={() => setShowForm(!showForm)}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3"
+              className="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3"
             >
               <Plus className="w-5 h-5 mr-2" />
               Create New Agreement
@@ -198,12 +188,12 @@ export default function AgreementsPage() {
                             setFormData({ ...formData, challenger: value })
                           }
                         >
-                          <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                          <SelectTrigger className="bg-white/10 border-white/20 text-white cursor-pointer">
                             <SelectValue placeholder="Select challenger" />
                           </SelectTrigger>
                           <SelectContent>
                             {runners.map((runner) => (
-                              <SelectItem key={runner} value={runner}>
+                              <SelectItem key={runner} value={runner} className="border-white/20 cursor-pointer">
                                 {runner}
                               </SelectItem>
                             ))}
@@ -221,14 +211,14 @@ export default function AgreementsPage() {
                             setFormData({ ...formData, challenged: value })
                           }
                         >
-                          <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                          <SelectTrigger className="bg-white/10 border-white/20 text-white cursor-pointer">
                             <SelectValue placeholder="Select challenged" />
                           </SelectTrigger>
                           <SelectContent>
                             {runners
                               .filter((r) => r !== formData.challenger)
                               .map((runner) => (
-                                <SelectItem key={runner} value={runner}>
+                                <SelectItem key={runner} value={runner} className="border-white/20 cursor-pointer">
                                   {runner}
                                 </SelectItem>
                               ))}
@@ -248,13 +238,13 @@ export default function AgreementsPage() {
                             setFormData({ ...formData, betType: value })
                           }
                         >
-                          <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                          <SelectTrigger className="bg-white/10 border-white/20 text-white cursor-pointer">
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="money">Money</SelectItem>
-                            <SelectItem value="task">Task/Favor</SelectItem>
-                            <SelectItem value="treat">Buy Treat</SelectItem>
+                            <SelectItem value="money" className="border-white/20 cursor-pointer">Money</SelectItem>
+                            <SelectItem value="task" className="border-white/20 cursor-pointer">Task/Favor</SelectItem>
+                            <SelectItem value="treat" className="border-white/20 cursor-pointer">Buy Treat</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -262,7 +252,7 @@ export default function AgreementsPage() {
                       <div className="space-y-2">
                         <Label htmlFor="betAmount" className="text-white">
                           {formData.betType === "money"
-                            ? "Amount ($)"
+                            ? "Amount (UGX)"
                             : "Description"}
                         </Label>
                         <Input
@@ -314,14 +304,14 @@ export default function AgreementsPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, deadline: e.target.value })
                         }
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-white/10 border-white/20 text-white cursor-pointer"
                       />
                     </div>
 
                     <div className="flex gap-4">
                       <Button
                         type="submit"
-                        className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white"
+                        className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white cursor-pointer"
                       >
                         <Handshake className="w-4 h-4 mr-2" />
                         Create Agreement
@@ -330,7 +320,7 @@ export default function AgreementsPage() {
                         type="button"
                         variant="outline"
                         onClick={() => setShowForm(false)}
-                        className="border-white/30 text-white hover:bg-white/10"
+                        className="border-white/30 text-white hover:bg-white/10 cursor-pointer"
                       >
                         Cancel
                       </Button>
