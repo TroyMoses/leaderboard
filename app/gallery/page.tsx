@@ -20,18 +20,18 @@ import Image from "next/image";
 const galleryMoments = [
   {
     id: 1,
-    image: "/placeholder.svg?height=400&width=600",
-    title: "Week 3 Victory Celebration",
-    description: "Troy takes it for the 3rd consecutive week! 🏆",
+    image: "/caleb.jpg",
+    title: "Challenger Loses Bet to Astrav",
+    description: "Caleb loses a bet to Astrav after a close race!",
     date: "2025-07-02",
     location: "Rashida Towers, Mabua Road",
     likes: 30,
     comments: 8,
-    tags: ["victory", "celebration", "week3"],
+    tags: ["loss", "bet", "week3"],
   },
   {
     id: 2,
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/brennan2.png",
     title: "Rising Star Debut Run",
     description: "Brennan finishes 5th on her first appearance!",
     date: "2025-07-02",
@@ -42,7 +42,7 @@ const galleryMoments = [
   },
   {
     id: 3,
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/denis2.png",
     title: "Finishing Drama",
     description: "Denis and Astrav in an epic sprint to the finish line!",
     date: "2025-07-02",
@@ -144,13 +144,16 @@ export default function GalleryPage() {
               >
                 <Card className="bg-white/10 backdrop-blur-sm border-white/20 overflow-hidden hover:bg-white/15 transition-all duration-300">
                   <div className="relative">
+                    <div className="flex justify-center items-center">
+
                     <Image
                       src={moment.image || "/placeholder.svg"}
                       alt={moment.title}
                       width={600}
                       height={400}
-                      className="w-full h-64 object-cover"
+                      className="w-[350px] h-[350px] object-cover item-center"
                     />
+                    </div>
                     <div className="absolute top-4 right-4">
                       <Badge className="bg-black/50 text-white">
                         {new Date(moment.date).toLocaleDateString()}
@@ -158,7 +161,7 @@ export default function GalleryPage() {
                     </div>
                   </div>
 
-                  <CardContent className="p-4">
+                  <CardContent className="px-4">
                     <h3 className="text-lg font-semibold text-white mb-2">
                       {moment.title}
                     </h3>
