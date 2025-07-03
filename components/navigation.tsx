@@ -36,7 +36,7 @@ export function Navigation() {
               <Trophy className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold text-white">
-              IntLeaderBoard 25
+              IntLeaderBoard 25&#39;
             </span>
           </Link>
 
@@ -49,7 +49,7 @@ export function Navigation() {
                 <Link key={item.href} href={item.href}>
                   <Button
                     variant="ghost"
-                    className={`text-white hover:bg-white/10 ${
+                    className={`text-white hover:bg-white/50 cursor-pointer ${
                       isActive ? "bg-white/20" : ""
                     }`}
                   >
@@ -62,7 +62,7 @@ export function Navigation() {
             <Button
               variant="outline"
               size="sm"
-              className="ml-4 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent"
+              className="cursor-pointer ml-4 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent"
             >
               <Settings className="w-4 h-4 mr-2" />
               Admin

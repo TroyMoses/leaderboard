@@ -21,7 +21,7 @@ import { Navigation } from "@/components/navigation";
 const dummyRunners = [
   {
     id: 1,
-    name: "Alex Johnson",
+    name: "Troy Legacy",
     position: 1,
     score: 95,
     avatar: "🏃‍♂️",
@@ -29,42 +29,42 @@ const dummyRunners = [
   },
   {
     id: 2,
-    name: "Sarah Chen",
+    name: "Daniel Magero",
     position: 2,
     score: 88,
     avatar: "🏃‍♀️",
-    streak: 2,
+    streak: 3,
   },
   {
     id: 3,
-    name: "Mike Rodriguez",
+    name: "Denis Hacker",
     position: 3,
     score: 82,
     avatar: "🏃‍♂️",
-    streak: 1,
+    streak: 2,
   },
   {
-    id: 14,
-    name: "Tom Wilson",
-    position: 14,
-    score: 45,
-    avatar: "🏃‍♂️",
-    streak: 0,
-  },
-  {
-    id: 15,
-    name: "Lisa Park",
-    position: 15,
-    score: 38,
+    id: 4,
+    name: "Daniel Astrav",
+    position: 4,
+    score: 78,
     avatar: "🏃‍♀️",
     streak: 0,
   },
   {
-    id: 16,
-    name: "David Kim",
-    position: 16,
-    score: 32,
+    id: 5,
+    name: "Brennan Baingana",
+    position: 5,
+    score: 75,
     avatar: "🏃‍♂️",
+    streak: 0,
+  },
+  {
+    id: 6,
+    name: "Caleb",
+    position: 6,
+    score: 72,
+    avatar: "🏃‍♀️",
     streak: 0,
   },
 ];
@@ -73,11 +73,11 @@ const stats = [
   { label: "Total Runners", value: "16", icon: Users, color: "text-blue-500" },
   {
     label: "Weeks Running",
-    value: "12",
+    value: "3",
     icon: TrendingUp,
     color: "text-green-500",
   },
-  { label: "Active Bets", value: "8", icon: Target, color: "text-purple-500" },
+  { label: "Active Bets", value: "4", icon: Target, color: "text-purple-500" },
   {
     label: "Moments Captured",
     value: "47",
@@ -119,15 +119,15 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-2 rounded-full text-sm font-medium mb-6"
             >
               <Zap className="w-4 h-4" />
-              Week 12 Results Are In!
+              Week 3 Results Are In!
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
               <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                IntLeaderBoard
+                IntLeaderBoard 25&#39;
               </span>
               <br />
-              <span className="text-3xl md:text-4xl text-gray-300">25</span>
+              {/* <span className="text-3xl md:text-4xl text-gray-300">25</span> */}
             </h1>
 
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
@@ -139,7 +139,7 @@ export default function HomePage() {
               <Link href="/leaderboard">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3 text-lg"
+                  className="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3 text-lg"
                 >
                   <Trophy className="w-5 h-5 mr-2" />
                   View Leaderboard
@@ -149,7 +149,7 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 text-lg bg-transparent"
+                  className="border-purple-400 cursor-pointer text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 text-lg bg-transparent"
                 >
                   <Target className="w-5 h-5 mr-2" />
                   Make a Bet
@@ -161,7 +161,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 relative">
+      <section className="py-4 md:py-8 relative">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -194,7 +194,7 @@ export default function HomePage() {
       </section>
 
       {/* Top Performers */}
-      <section className="py-16">
+      <section className="py-4 md:py-8">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -263,7 +263,7 @@ export default function HomePage() {
       </section>
 
       {/* Bottom Performers - Motivation Section */}
-      <section className="py-16">
+      <section className="py-4 md:py-8">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -327,14 +327,14 @@ export default function HomePage() {
               Ready to Join the Movement?
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Every Wednesday at 6 AM, we lace up and chase greatness. Will you
+              Every Wednesday at 5 PM, we lace up and chase greatness. Will you
               be the next champion?
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/leaderboard">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg"
+                  className="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg"
                 >
                   <Trophy className="w-5 h-5 mr-2" />
                   Check Full Rankings
@@ -344,7 +344,7 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg bg-transparent"
+                  className="cursor-pointer border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg bg-transparent"
                 >
                   <Camera className="w-5 h-5 mr-2" />
                   View Moments
