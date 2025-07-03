@@ -101,7 +101,7 @@ const allRunners = [
   },
   {
     id: 9,
-    name: "Iqra Abdi",
+    name: "Iqra",
     position: 9,
     score: 0,
     avatar: "🏃‍♀️",

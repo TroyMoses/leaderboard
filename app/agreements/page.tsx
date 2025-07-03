@@ -71,6 +71,12 @@ const runners = [
   "Daniel Astrav",
   "Brennan Baingana",
   "Caleb",
+  "Justine",
+  "Shahid",
+  "Iqra",
+  "Mercy",
+  "Nina",
+  "Hannah",
 ];
 
 export default function AgreementsPage() {
