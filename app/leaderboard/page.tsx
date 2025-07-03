@@ -128,7 +128,7 @@ export default function LeaderboardPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mt-4 mb-12"
           >
             <h1 className="text-5xl font-bold text-white mb-4">
               🏆 Weekly Leaderboard
@@ -309,7 +309,7 @@ export default function LeaderboardPage() {
             transition={{ delay: 1, duration: 0.6 }}
             className="text-center mt-12"
           >
-            <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3">
+            <Button className="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3">
               Update Positions (Admin Only)
             </Button>
           </motion.div>
