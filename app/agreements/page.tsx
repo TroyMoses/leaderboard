@@ -45,7 +45,7 @@ const existingAgreements = [
     id: 2,
     challenger: "Caleb",
     challenged: "Daniel Astrav",
-    bet: "UGX 50,000",
+    bet: "UGX 10,000",
     condition: "First to reach the finishing line",
     status: "completed",
     winner: "Daniel Astrav",
