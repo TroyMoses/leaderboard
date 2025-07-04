@@ -103,9 +103,9 @@ export default function HomePage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20 pb-16">
+      <section className="relative overflow-hidden pt-20 pb-16 px-4">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20" />
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -116,32 +116,31 @@ export default function HomePage() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-2 rounded-full text-sm font-medium mb-6"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-medium mb-6"
             >
-              <Zap className="w-4 h-4" />
+              <Zap className="w-3 h-3 sm:w-4 sm:h-4" />
               Week 3 Results Are In!
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
               <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                 IntLeaderBoard 25&#39;
               </span>
               <br />
-              {/* <span className="text-3xl md:text-4xl text-gray-300">25</span> */}
             </h1>
 
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed px-4">
               Where every Wednesday run counts. Track your progress, challenge
               your teammates, and climb the ultimate jogging leaderboard.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <Link href="/leaderboard">
                 <Button
                   size="lg"
-                  className="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3 text-lg"
+                  className="cursor-pointer w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 sm:px-8 py-3 text-base sm:text-lg"
                 >
-                  <Trophy className="w-5 h-5 mr-2" />
+                  <Trophy className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   View Leaderboard
                 </Button>
               </Link>
@@ -149,9 +148,9 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-purple-400 cursor-pointer text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 text-lg bg-transparent"
+                  className="cursor-pointer w-full sm:w-auto border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-6 sm:px-8 py-3 text-base sm:text-lg bg-transparent"
                 >
-                  <Target className="w-5 h-5 mr-2" />
+                  <Target className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Make a Bet
                 </Button>
               </Link>
@@ -161,13 +160,13 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-4 md:py-8 relative">
-        <div className="container mx-auto px-4">
+      <section className="py-16 relative px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-16"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -194,8 +193,8 @@ export default function HomePage() {
       </section>
 
       {/* Top Performers */}
-      <section className="py-4 md:py-8">
-        <div className="container mx-auto px-4">
+      <section className="py-16 px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -210,7 +209,7 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-16">
             {topRunners.map((runner, index) => (
               <motion.div
                 key={runner.id}
@@ -263,8 +262,8 @@ export default function HomePage() {
       </section>
 
       {/* Bottom Performers - Motivation Section */}
-      <section className="py-4 md:py-8">
-        <div className="container mx-auto px-4">
+      <section className="py-16 px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -279,7 +278,7 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-16">
             {bottomRunners.map((runner, index) => (
               <motion.div
                 key={runner.id}
@@ -314,9 +313,9 @@ export default function HomePage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 relative">
+      <section className="py-20 relative px-4">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-600/30 to-blue-600/30" />
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -330,13 +329,13 @@ export default function HomePage() {
               Every Wednesday at 5 PM, we lace up and chase greatness. Will you
               be the next champion?
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <Link href="/leaderboard">
                 <Button
                   size="lg"
-                  className="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg"
+                  className="cursor-pointer w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
                 >
-                  <Trophy className="w-5 h-5 mr-2" />
+                  <Trophy className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Check Full Rankings
                 </Button>
               </Link>
@@ -344,9 +343,9 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="cursor-pointer border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg bg-transparent"
+                  className="cursor-pointer w-full sm:w-auto border-white/30 text-white hover:bg-white/10 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg bg-transparent"
                 >
-                  <Camera className="w-5 h-5 mr-2" />
+                  <Camera className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   View Moments
                 </Button>
               </Link>
