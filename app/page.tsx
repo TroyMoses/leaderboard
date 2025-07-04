@@ -160,7 +160,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 relative px-4">
+      <section className="py-2 pt-4 md:pt-8 relative px-4">
         <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -193,7 +193,7 @@ export default function HomePage() {
       </section>
 
       {/* Top Performers */}
-      <section className="py-16 px-4">
+      <section className="py-2 px-4">
         <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -262,7 +262,7 @@ export default function HomePage() {
       </section>
 
       {/* Bottom Performers - Motivation Section */}
-      <section className="py-16 px-4">
+      <section className="py-2 px-4">
         <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -313,7 +313,7 @@ export default function HomePage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 relative px-4">
+      <section className="py-2 md:pt-4 md:pb-8 relative px-4">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-600/30 to-blue-600/30" />
         <div className="container mx-auto px-4 relative z-10 max-w-7xl">
           <motion.div

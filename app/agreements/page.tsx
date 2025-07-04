@@ -439,14 +439,14 @@ export default function AgreementsPage() {
                             <div className="flex gap-2">
                               <Button
                                 size="sm"
-                                className="bg-green-600 hover:bg-green-700 text-white"
+                                className="bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                               >
                                 Mark Complete
                               </Button>
                               <Button
                                 size="sm"
                                 variant="outline"
-                                className="border-red-400 text-red-400 hover:bg-red-400 hover:text-white bg-transparent"
+                                className="border-red-400 text-red-400 hover:bg-red-400 hover:text-white bg-transparent cursor-pointer"
                               >
                                 Cancel
                               </Button>

@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IntLeaderBoard 25 🏃‍♂️🏆
 
-## Getting Started
+A modern, interactive platform for tracking weekly running competitions among teammates. Built for the competitive spirit of Wednesday morning joggers who love to challenge each other and celebrate victories together.
 
-First, run the development server:
+## 🌟 Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+IntLeaderBoard 25' is where every Wednesday run counts. Our platform transforms your weekly jogging sessions into an engaging competition with real-time leaderboards, friendly betting, and memorable moments capture.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🏆 **Dynamic Leaderboard**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Real-time position tracking for all 16+ runners
+- Weekly score calculations with progress visualizations
+- Streak tracking and performance analytics
+- Position change indicators (up/down arrows)
+- Special recognition for top 3 performers
 
-## Learn More
+### 🤝 **Runner Agreements & Betting**
 
-To learn more about Next.js, take a look at the following resources:
+- Create friendly competitions between teammates
+- Support for money bets, tasks, and treats
+- Agreement status tracking (active, completed, pending)
+- Winner declaration and bet resolution
+- Challenge conditions and deadline management
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 📸 **Moments Gallery**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Photo and video sharing from weekly runs
+- Engagement features (likes, comments, shares)
+- Organized by tags and locations
+- Victory celebrations and team spirit capture
+- Behind-the-scenes training content
 
-## Deploy on Vercel
+### 📊 **Performance Analytics**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Individual runner progress tracking
+- Weekly performance comparisons
+- Streak monitoring and achievements
+- Score-based ranking system
+- Historical performance data
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎯 Perfect For
+
+- **Running Teams** who meet regularly for group exercises
+- **Corporate Wellness Programs** promoting healthy competition
+- **Fitness Communities** looking to gamify their activities
+- **Sports Clubs** wanting to track member performance
+- **Friend Groups** who enjoy competitive challenges
+
+## 🚀 The Experience
+
+Every Wednesday at 6 PM, lace up your running shoes and join the movement. Whether you're chasing the top spot, making friendly bets with teammates, or just enjoying the camaraderie, IntLeaderBoard 25' makes every run count.
+
+**Ready to join the movement?** 🏃‍♀️💨
+
+---
+
+_"Where every Wednesday run counts. Track your progress, challenge your teammates, and climb the ultimate jogging leaderboard."_
