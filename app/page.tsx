@@ -53,18 +53,18 @@ const dummyRunners = [
   },
   {
     id: 5,
-    name: "Brennan Baingana",
+    name: "Caleb",
     position: 5,
     score: 75,
-    avatar: "🏃‍♂️",
+    avatar: "🏃‍♀️",
     streak: 0,
   },
   {
     id: 6,
-    name: "Caleb",
+    name: "Brennan Baingana",
     position: 6,
-    score: 72,
-    avatar: "🏃‍♀️",
+    score: 70,
+    avatar: "🏃‍♂️",
     streak: 0,
   },
 ];
@@ -103,7 +103,7 @@ export default function HomePage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20 pb-16 px-4">
+      <section className="relative overflow-hidden pt-20 pb-16 px-2 md:px-4">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20" />
         <div className="container mx-auto px-4 relative z-10 max-w-7xl">
           <motion.div
@@ -160,7 +160,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-2 pt-4 md:pt-8 relative px-4">
+      <section className="py-2 pt-4 md:pt-8 relative px-2 md:px-4">
         <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -193,7 +193,7 @@ export default function HomePage() {
       </section>
 
       {/* Top Performers */}
-      <section className="py-2 px-4">
+      <section className="py-2 px-2 md:px-4">
         <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -262,7 +262,7 @@ export default function HomePage() {
       </section>
 
       {/* Bottom Performers - Motivation Section */}
-      <section className="py-2 px-4">
+      <section className="py-2 px-2 md:px-4">
         <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -313,7 +313,7 @@ export default function HomePage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-2 md:pt-4 md:pb-8 relative px-4">
+      <section className="py-2 md:pt-4 md:pb-8 relative px-2 md:px-4">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-600/30 to-blue-600/30" />
         <div className="container mx-auto px-4 relative z-10 max-w-7xl">
           <motion.div

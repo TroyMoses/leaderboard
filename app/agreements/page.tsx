@@ -142,8 +142,8 @@ export default function AgreementsPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <Navigation />
 
-      <div className="pt-20 pb-16 px-4">
-        <div className="container mx-auto px-4 max-w-7xl">
+      <div className="pt-20 pb-16 px-2 md:px-4">
+        <div className="container mx-auto px-2 md:px-4 max-w-7xl">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -365,6 +365,7 @@ export default function AgreementsPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
+            className="container mx-auto px-2 md:px-4 max-w-7xl"
           >
             <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-2">
               <Users className="w-8 h-8" />
