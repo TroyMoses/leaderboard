@@ -172,11 +172,11 @@ export default function GalleryPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 mx-auto max-w-7xl">
       <Navigation />
 
-      <div className="pt-20 pb-16 px-4">
-        <div className="container mx-auto px-4 max-w-7xl">
+      <div className="pt-20 pb-16 px-2 md:px-4">
+        <div className="container mx-auto px-2 md:px-4 max-w-7xl">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -280,7 +280,7 @@ export default function GalleryPage() {
 
               <TabsContent value={activeTab} className="mt-8">
                 {/* Gallery Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mx-auto max-w-7xl">
                   {filteredMoments.map((moment, index) => (
                     <motion.div
                       key={moment.id}
