@@ -109,7 +109,7 @@ const videoMoments = [
   {
     id: 8,
     video: "/videos/warmup.mp4",
-    thumbnail: "/thumnails/warmup_th.jpg",
+    thumbnail: "/thumbnails/warmup_th.jpg",
     title: "Team Warm-up Routine",
     description: "Our signature pre-run warm-up that gets everyone pumped!",
     date: "2024-07-02",
