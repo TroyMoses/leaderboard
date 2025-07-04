@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Camera,
   Heart,
@@ -12,11 +13,14 @@ import {
   Share,
   Upload,
   MapPin,
+  Play,
+  Video,
+  ImageIcon,
 } from "lucide-react";
 import { Navigation } from "@/components/navigation";
 import Image from "next/image";
 
-// Dummy data for gallery moments
+// Dummy data for gallery moments (photos)
 const galleryMoments = [
   {
     id: 1,
@@ -28,6 +32,7 @@ const galleryMoments = [
     likes: 30,
     comments: 8,
     tags: ["loss", "bet", "week3"],
+    type: "photo",
   },
   {
     id: 2,
@@ -39,6 +44,7 @@ const galleryMoments = [
     likes: 23,
     comments: 12,
     tags: ["teamwork", "motivation", "squad"],
+    type: "photo",
   },
   {
     id: 3,
@@ -50,18 +56,91 @@ const galleryMoments = [
     likes: 31,
     comments: 18,
     tags: ["dramatic", "sprint", "competition"],
+    type: "photo",
   },
 ];
 
+// Dummy data for video moments
+const videoMoments = [
+  {
+    id: 7,
+    video: "/videos/teamtalk_ele.mp4",
+    thumbnail: "/thumbnails/elevator_th.jpg",
+    title: "A brief team talk, waiting for the elevator",
+    description:
+      "While waiting for the elevator to the ground floor, the team had a brief talk about the race. ",
+    date: "2025-07-02",
+    location: "5th Floor Corridor",
+    duration: "0:45",
+    likes: 67,
+    comments: 23,
+    tags: ["team", "warmup", "routine", "preparation"],
+    type: "video",
+  },
+  {
+    id: 8,
+    video: "/videos/warmup.mp4",
+    thumbnail: "/thumnails/warmup_th.jpg",
+    title: "Team Warm-up Routine",
+    description: "Our signature pre-run warm-up that gets everyone pumped!",
+    date: "2024-07-02",
+    location: "Starting Area",
+    duration: "1:20",
+    likes: 34,
+    comments: 11,
+    tags: ["warmup", "routine", "team", "preparation"],
+    type: "video",
+  },
+  {
+    id: 9,
+    video: "/videos/caleb_bet.mp4",
+    thumbnail: "/caleb.jpg",
+    title: "A bet placed by Caleb",
+    description: "Caleb bets on winning Astrav in the next race!",
+    date: "2024-01-20",
+    location: "6th Floor Lounge",
+    duration: "2:15",
+    likes: 89,
+    comments: 31,
+    tags: ["bet", "money", "competition", "challenge"],
+    type: "video",
+  },
+];
+
+const allMoments = [...galleryMoments, ...videoMoments].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+);
+
 export default function GalleryPage() {
   const [mounted, setMounted] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [selectedMedia, setSelectedMedia] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState("all");
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!mounted) return null;
+
+  const getFilteredMoments = () => {
+    switch (activeTab) {
+      case "photos":
+        return galleryMoments;
+      case "videos":
+        return videoMoments;
+      default:
+        return allMoments;
+    }
+  };
+
+  const filteredMoments = getFilteredMoments();
+
+  const totalStats = {
+    photos: galleryMoments.length,
+    videos: videoMoments.length,
+    totalLikes: allMoments.reduce((sum, moment) => sum + moment.likes, 0),
+    totalComments: allMoments.reduce((sum, moment) => sum + moment.comments, 0),
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
@@ -97,118 +176,203 @@ export default function GalleryPage() {
           >
             <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-center">
               <CardContent className="p-4">
-                <Camera className="w-6 h-6 mx-auto mb-2 text-purple-400" />
-                <div className="text-2xl font-bold text-white">47</div>
-                <div className="text-sm text-gray-300">Total Photos</div>
+                <ImageIcon className="w-6 h-6 mx-auto mb-2 text-purple-400" />
+                <div className="text-2xl font-bold text-white">
+                  {totalStats.photos}
+                </div>
+                <div className="text-sm text-gray-300">Photos</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-center">
+              <CardContent className="p-4">
+                <Video className="w-6 h-6 mx-auto mb-2 text-blue-400" />
+                <div className="text-2xl font-bold text-white">
+                  {totalStats.videos}
+                </div>
+                <div className="text-sm text-gray-300">Videos</div>
               </CardContent>
             </Card>
             <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-center">
               <CardContent className="p-4">
                 <Heart className="w-6 h-6 mx-auto mb-2 text-red-400" />
-                <div className="text-2xl font-bold text-white">312</div>
+                <div className="text-2xl font-bold text-white">
+                  {totalStats.totalLikes}
+                </div>
                 <div className="text-sm text-gray-300">Total Likes</div>
               </CardContent>
             </Card>
             <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-center">
               <CardContent className="p-4">
-                <MessageCircle className="w-6 h-6 mx-auto mb-2 text-blue-400" />
-                <div className="text-2xl font-bold text-white">156</div>
+                <MessageCircle className="w-6 h-6 mx-auto mb-2 text-green-400" />
+                <div className="text-2xl font-bold text-white">
+                  {totalStats.totalComments}
+                </div>
                 <div className="text-sm text-gray-300">Comments</div>
-              </CardContent>
-            </Card>
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-center">
-              <CardContent className="p-4">
-                <Share className="w-6 h-6 mx-auto mb-2 text-green-400" />
-                <div className="text-2xl font-bold text-white">89</div>
-                <div className="text-sm text-gray-300">Shares</div>
               </CardContent>
             </Card>
           </motion.div>
 
-          {/* Gallery Grid */}
+          {/* Tabs for filtering */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="mb-8"
           >
-            {galleryMoments.map((moment, index) => (
-              <motion.div
-                key={moment.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
-                whileHover={{ scale: 1.02 }}
-                className="cursor-pointer"
-                onClick={() => setSelectedImage(moment.id)}
-              >
-                <Card className="bg-white/10 backdrop-blur-sm border-white/20 overflow-hidden hover:bg-white/15 transition-all duration-300">
-                  <div className="relative">
-                    <div className="flex justify-center items-center">
+            <Tabs
+              value={activeTab}
+              onValueChange={setActiveTab}
+              className="w-full"
+            >
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 bg-white/10 backdrop-blur-sm border-white/20">
+                <TabsTrigger
+                  value="all"
+                  className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-gray-300"
+                >
+                  All ({allMoments.length})
+                </TabsTrigger>
+                <TabsTrigger
+                  value="photos"
+                  className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-gray-300"
+                >
+                  <ImageIcon className="w-4 h-4 mr-1" />
+                  Photos ({totalStats.photos})
+                </TabsTrigger>
+                <TabsTrigger
+                  value="videos"
+                  className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-gray-300"
+                >
+                  <Video className="w-4 h-4 mr-1" />
+                  Videos ({totalStats.videos})
+                </TabsTrigger>
+              </TabsList>
 
-                    <Image
-                      src={moment.image || "/placeholder.svg"}
-                      alt={moment.title}
-                      width={600}
-                      height={400}
-                      className="w-[350px] h-[350px] object-cover item-center"
-                    />
-                    </div>
-                    <div className="absolute top-4 right-4">
-                      <Badge className="bg-black/50 text-white">
-                        {new Date(moment.date).toLocaleDateString()}
-                      </Badge>
-                    </div>
-                  </div>
-
-                  <CardContent className="px-4">
-                    <h3 className="text-lg font-semibold text-white mb-2">
-                      {moment.title}
-                    </h3>
-                    <p className="text-gray-300 text-sm mb-3 line-clamp-2">
-                      {moment.description}
-                    </p>
-
-                    <div className="flex items-center gap-2 text-xs text-gray-400 mb-3">
-                      <MapPin className="w-3 h-3" />
-                      <span>{moment.location}</span>
-                    </div>
-
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      {moment.tags.map((tag) => (
-                        <Badge
-                          key={tag}
-                          variant="outline"
-                          className="text-xs border-purple-400 text-purple-400"
-                        >
-                          #{tag}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4 text-sm text-gray-300">
-                        <div className="flex items-center gap-1">
-                          <Heart className="w-4 h-4 text-red-400" />
-                          <span>{moment.likes}</span>
+              <TabsContent value={activeTab} className="mt-8">
+                {/* Gallery Grid */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredMoments.map((moment, index) => (
+                    <motion.div
+                      key={moment.id}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
+                      whileHover={{ scale: 1.02 }}
+                      className="cursor-pointer"
+                      onClick={() => setSelectedMedia(moment.id)}
+                    >
+                      <Card className="bg-white/10 backdrop-blur-sm border-white/20 overflow-hidden hover:bg-white/15 transition-all duration-300">
+                        <div className="relative">
+                          {moment.type === "video" ? (
+                            <div className="relative">
+                              <Image
+                                src={
+                                  moment.type === "video"
+                                    ? (moment as typeof videoMoments[number]).thumbnail
+                                    : (moment as typeof galleryMoments[number]).image || "/placeholder.svg"
+                                }
+                                alt={moment.title}
+                                width={600}
+                                height={400}
+                                className="w-full h-64 object-cover"
+                              />
+                              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                                <div className="bg-white/20 backdrop-blur-sm rounded-full p-4">
+                                  <Play className="w-8 h-8 text-white" />
+                                </div>
+                              </div>
+                              <div className="absolute bottom-4 right-4">
+                                <Badge className="bg-black/70 text-white">
+                                  {"duration" in moment ? moment.duration : ""}
+                                </Badge>
+                              </div>
+                            </div>
+                          ) : (
+                            <Image
+                              src={
+                                "image" in moment
+                                  ? moment.image || "/placeholder.svg"
+                                  : "/placeholder.svg"
+                              }
+                              alt={moment.title}
+                              width={600}
+                              height={400}
+                              className="w-full h-64 object-cover"
+                            />
+                          )}
+                          <div className="absolute top-4 left-4">
+                            <Badge
+                              className={`${
+                                moment.type === "video"
+                                  ? "bg-blue-600"
+                                  : "bg-purple-600"
+                              } text-white`}
+                            >
+                              {moment.type === "video" ? (
+                                <Video className="w-3 h-3 mr-1" />
+                              ) : (
+                                <Camera className="w-3 h-3 mr-1" />
+                              )}
+                              {moment.type.toUpperCase()}
+                            </Badge>
+                          </div>
+                          <div className="absolute top-4 right-4">
+                            <Badge className="bg-black/50 text-white">
+                              {new Date(moment.date).toLocaleDateString()}
+                            </Badge>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <MessageCircle className="w-4 h-4 text-blue-400" />
-                          <span>{moment.comments}</span>
-                        </div>
-                      </div>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="text-gray-300 hover:text-white"
-                      >
-                        <Share className="w-4 h-4" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+
+                        <CardContent className="p-4">
+                          <h3 className="text-lg font-semibold text-white mb-2">
+                            {moment.title}
+                          </h3>
+                          <p className="text-gray-300 text-sm mb-3 line-clamp-2">
+                            {moment.description}
+                          </p>
+
+                          <div className="flex items-center gap-2 text-xs text-gray-400 mb-3">
+                            <MapPin className="w-3 h-3" />
+                            <span>{moment.location}</span>
+                          </div>
+
+                          <div className="flex flex-wrap gap-1 mb-3">
+                            {moment.tags.map((tag) => (
+                              <Badge
+                                key={tag}
+                                variant="outline"
+                                className="text-xs border-purple-400 text-purple-400"
+                              >
+                                #{tag}
+                              </Badge>
+                            ))}
+                          </div>
+
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-4 text-sm text-gray-300">
+                              <div className="flex items-center gap-1">
+                                <Heart className="w-4 h-4 text-red-400" />
+                                <span>{moment.likes}</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <MessageCircle className="w-4 h-4 text-blue-400" />
+                                <span>{moment.comments}</span>
+                              </div>
+                            </div>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              className="text-gray-300 hover:text-white"
+                            >
+                              <Share className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+              </TabsContent>
+            </Tabs>
           </motion.div>
 
           {/* Load More Button */}
@@ -228,50 +392,98 @@ export default function GalleryPage() {
         </div>
       </div>
 
-      {/* Modal for selected image (simplified) */}
-      {selectedImage && (
+      {/* Modal for selected media */}
+      {selectedMedia && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+          onClick={() => setSelectedMedia(null)}
         >
           <div className="max-w-4xl w-full bg-white/10 backdrop-blur-sm rounded-lg p-6">
             <div className="text-right mb-4">
               <Button
                 variant="ghost"
-                onClick={() => setSelectedImage(null)}
+                onClick={() => setSelectedMedia(null)}
                 className="text-white"
               >
                 ✕
               </Button>
             </div>
-            {galleryMoments.find((m) => m.id === selectedImage) && (
-              <div>
-                <Image
-                  src={
-                    galleryMoments.find((m) => m.id === selectedImage)!.image ||
-                    "/placeholder.svg"
-                  }
-                  alt={
-                    galleryMoments.find((m) => m.id === selectedImage)!.title
-                  }
-                  width={800}
-                  height={600}
-                  className="w-full h-auto rounded-lg mb-4"
-                />
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  {galleryMoments.find((m) => m.id === selectedImage)!.title}
-                </h3>
-                <p className="text-gray-300">
-                  {
-                    galleryMoments.find((m) => m.id === selectedImage)!
-                      .description
-                  }
-                </p>
-              </div>
-            )}
+            {(() => {
+              const selectedMoment = allMoments.find(
+                (m) => m.id === selectedMedia
+              );
+              if (!selectedMoment) return null;
+
+              // Type guard for video moments
+              function isVideoMoment(
+                moment: typeof allMoments[number]
+              ): moment is typeof videoMoments[number] {
+                return moment.type === "video";
+              }
+
+              return (
+                <div>
+                  {isVideoMoment(selectedMoment) ? (
+                    <video
+                      controls
+                      className="w-full h-auto rounded-lg mb-4"
+                      poster={selectedMoment.thumbnail}
+                    >
+                      <source
+                        src={selectedMoment.video}
+                        type="video/mp4"
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <Image
+                      src={selectedMoment.image || "/placeholder.svg"}
+                      alt={selectedMoment.title}
+                      width={800}
+                      height={600}
+                      className="w-full h-auto rounded-lg mb-4"
+                    />
+                  )}
+                  <div className="flex items-center gap-2 mb-2">
+                    <Badge
+                      className={`${
+                        selectedMoment.type === "video"
+                          ? "bg-blue-600"
+                          : "bg-purple-600"
+                      } text-white`}
+                    >
+                      {selectedMoment.type === "video" ? (
+                        <Video className="w-3 h-3 mr-1" />
+                      ) : (
+                        <Camera className="w-3 h-3 mr-1" />
+                      )}
+                      {selectedMoment.type.toUpperCase()}
+                    </Badge>
+                    {selectedMoment.type === "video" && "duration" in selectedMoment && (
+                      <Badge className="bg-gray-600 text-white">
+                        {selectedMoment.duration}
+                      </Badge>
+                    )}
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    {selectedMoment.title}
+                  </h3>
+                  <p className="text-gray-300 mb-4">
+                    {selectedMoment.description}
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-gray-400">
+                    <span>
+                      {new Date(selectedMoment.date).toLocaleDateString()}
+                    </span>
+                    <span>•</span>
+                    <span>{selectedMoment.location}</span>
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </motion.div>
       )}

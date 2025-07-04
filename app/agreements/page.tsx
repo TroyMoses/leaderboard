@@ -197,9 +197,13 @@ export default function AgreementsPage() {
                           <SelectTrigger className="bg-white/10 border-white/20 text-white cursor-pointer">
                             <SelectValue placeholder="Select challenger" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="bg-slate-800 border-slate-700">
                             {runners.map((runner) => (
-                              <SelectItem key={runner} value={runner} className="border-white/20 cursor-pointer">
+                              <SelectItem
+                                key={runner}
+                                value={runner}
+                                className="text-white hover:bg-slate-700 focus:bg-slate-700"
+                              >
                                 {runner}
                               </SelectItem>
                             ))}
@@ -220,11 +224,15 @@ export default function AgreementsPage() {
                           <SelectTrigger className="bg-white/10 border-white/20 text-white cursor-pointer">
                             <SelectValue placeholder="Select challenged" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="bg-slate-800 border-slate-700">
                             {runners
                               .filter((r) => r !== formData.challenger)
                               .map((runner) => (
-                                <SelectItem key={runner} value={runner} className="border-white/20 cursor-pointer">
+                                <SelectItem
+                                  key={runner}
+                                  value={runner}
+                                  className="text-white hover:bg-slate-700 focus:bg-slate-700"
+                                >
                                   {runner}
                                 </SelectItem>
                               ))}
@@ -247,10 +255,25 @@ export default function AgreementsPage() {
                           <SelectTrigger className="bg-white/10 border-white/20 text-white cursor-pointer">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="money" className="border-white/20 cursor-pointer">Money</SelectItem>
-                            <SelectItem value="task" className="border-white/20 cursor-pointer">Task/Favor</SelectItem>
-                            <SelectItem value="treat" className="border-white/20 cursor-pointer">Buy Treat</SelectItem>
+                          <SelectContent className="bg-slate-800 border-slate-700">
+                            <SelectItem
+                              value="money"
+                              className="text-white hover:bg-slate-700 focus:bg-slate-700"
+                            >
+                              Money
+                            </SelectItem>
+                            <SelectItem
+                              value="task"
+                              className="text-white hover:bg-slate-700 focus:bg-slate-700"
+                            >
+                              Task/Favor
+                            </SelectItem>
+                            <SelectItem
+                              value="treat"
+                              className="text-white hover:bg-slate-700 focus:bg-slate-700"
+                            >
+                              Buy Treat
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
