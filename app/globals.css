@@ -104,8 +104,62 @@
   * {
     @apply border-border;
   }
+
+  html {
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Prevent horizontal scroll on all containers */
+  .container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Ensure all sections don't overflow */
+  section {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Mobile-specific adjustments */
+  @media (max-width: 640px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Ensure cards don't overflow */
+    .card {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Prevent text overflow */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    /* Ensure buttons are properly sized */
+    button {
+      max-width: 100%;
+      word-wrap: break-word;
+    }
   }
 }
 
@@ -132,4 +186,23 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent video overflow */
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix for select dropdowns on mobile */
+@media (max-width: 640px) {
+  [role="combobox"] {
+    max-width: 100%;
+  }
 }

@@ -181,8 +181,8 @@ export default function LeaderboardPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <Navigation />
 
-      <div className="pt-20 pb-16">
-        <div className="container mx-auto px-4">
+      <div className="pt-20 pb-16 px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -190,13 +190,13 @@ export default function LeaderboardPage() {
             transition={{ duration: 0.6 }}
             className="text-center mt-4 mb-12"
           >
-            <h1 className="text-5xl font-bold text-white mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               🏆 Weekly Leaderboard
             </h1>
-            <p className="text-xl text-gray-300 mb-6">
-              Week 3 - Updated every Wednesday
+            <p className="text-lg sm:text-xl text-gray-300 mb-6 px-4">
+              Week 12 - Updated every Wednesday
             </p>
-            <Badge className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 text-sm">
+            <Badge className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-3 sm:px-4 py-2 text-xs sm:text-sm">
               Next Update: Wednesday 6:00 PM
             </Badge>
           </motion.div>
@@ -206,7 +206,7 @@ export default function LeaderboardPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="grid md:grid-cols-3 gap-6 mb-12"
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-12"
           >
             {allRunners.slice(0, 3).map((runner, index) => (
               <Card
@@ -283,7 +283,7 @@ export default function LeaderboardPage() {
                           delay: 0.6 + index * 0.05,
                           duration: 0.4,
                         }}
-                        className={`p-4 rounded-lg bg-gradient-to-r ${getCardGradient(
+                        className={`p-3 sm:p-4 rounded-lg bg-gradient-to-r ${getCardGradient(
                           runner.position
                         )} border-l-4 ${
                           runner.position <= 3
@@ -296,19 +296,21 @@ export default function LeaderboardPage() {
                         }`}
                       >
                         <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1">
+                            <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
                               {getPositionIcon(runner.position)}
-                              <span className="text-2xl font-bold text-white w-8">
+                              <span className="text-lg sm:text-2xl font-bold text-white">
                                 #{runner.position}
                               </span>
                             </div>
-                            <div className="text-3xl">{runner.avatar}</div>
-                            <div>
-                              <h3 className="text-lg font-semibold text-white">
+                            <div className="text-2xl sm:text-3xl flex-shrink-0">
+                              {runner.avatar}
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <h3 className="text-sm sm:text-lg font-semibold text-white truncate">
                                 {runner.name}
                               </h3>
-                              <div className="flex items-center gap-2 text-sm text-gray-300">
+                              <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-300">
                                 <span>{runner.totalRuns} runs</span>
                                 {runner.streak > 0 && (
                                   <span className="text-orange-400">
@@ -319,34 +321,34 @@ export default function LeaderboardPage() {
                             </div>
                           </div>
 
-                          <div className="flex items-center gap-6">
+                          <div className="flex items-center gap-2 sm:gap-6 flex-shrink-0">
                             <div className="text-right">
-                              <div className="text-2xl font-bold text-white">
+                              <div className="text-lg sm:text-2xl font-bold text-white">
                                 {runner.score}
                               </div>
-                              <div className="text-sm text-gray-300">
+                              <div className="text-xs sm:text-sm text-gray-300">
                                 points
                               </div>
                             </div>
 
-                            <div className="w-32">
+                            <div className="w-16 sm:w-32 hidden sm:block">
                               <Progress
                                 value={(runner.score / 100) * 100}
                                 className="h-2"
                               />
                             </div>
 
-                            <div className="flex items-center gap-1">
+                            <div className="flex items-center gap-1 flex-shrink-0">
                               {change === "up" && (
-                                <TrendingUp className="w-4 h-4 text-green-400" />
+                                <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-green-400" />
                               )}
                               {change === "down" && (
-                                <TrendingDown className="w-4 h-4 text-red-400" />
+                                <TrendingDown className="w-3 h-3 sm:w-4 sm:h-4 text-red-400" />
                               )}
                               {change === "same" && (
-                                <Minus className="w-4 h-4 text-gray-400" />
+                                <Minus className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
                               )}
-                              <span className="text-sm text-gray-300 w-8">
+                              <span className="text-xs sm:text-sm text-gray-300 w-4 sm:w-8">
                                 {Math.abs(
                                   runner.position - runner.lastWeekPosition
                                 ) || "-"}

@@ -142,8 +142,8 @@ export default function AgreementsPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <Navigation />
 
-      <div className="pt-20 pb-16">
-        <div className="container mx-auto px-4">
+      <div className="pt-20 pb-16 px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -151,15 +151,15 @@ export default function AgreementsPage() {
             transition={{ duration: 0.6 }}
             className="text-center mt-4 mb-12"
           >
-            <h1 className="text-5xl font-bold text-white mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               🤝 Runner Agreements
             </h1>
-            <p className="text-xl text-gray-300 mb-6">
+            <p className="text-lg sm:text-xl text-gray-300 mb-6 px-4">
               Challenge your teammates and make it interesting!
             </p>
             <Button
               onClick={() => setShowForm(!showForm)}
-              className="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3"
+              className="cursor-pointer w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3"
             >
               <Plus className="w-5 h-5 mr-2" />
               Create New Agreement
@@ -183,7 +183,7 @@ export default function AgreementsPage() {
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="challenger" className="text-white">
                           Challenger
@@ -241,7 +241,7 @@ export default function AgreementsPage() {
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="betType" className="text-white">
                           Bet Type
@@ -405,19 +405,23 @@ export default function AgreementsPage() {
                         </div>
                       </div>
 
-                      <div className="grid md:grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                         <div>
-                          <h3 className="text-xl font-semibold text-white mb-2">
+                          <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
                             {agreement.challenger} vs {agreement.challenged}
                           </h3>
                           <div className="space-y-2 text-gray-300">
                             <div className="flex items-center gap-2">
-                              <DollarSign className="w-4 h-4" />
-                              <span>Stake: {agreement.bet}</span>
+                              <DollarSign className="w-4 h-4 flex-shrink-0" />
+                              <span className="break-words">
+                                Stake: {agreement.bet}
+                              </span>
                             </div>
                             <div className="flex items-start gap-2">
-                              <Trophy className="w-4 h-4 mt-1" />
-                              <span>{agreement.condition}</span>
+                              <Trophy className="w-4 h-4 mt-1 flex-shrink-0" />
+                              <span className="break-words">
+                                {agreement.condition}
+                              </span>
                             </div>
                           </div>
                         </div>

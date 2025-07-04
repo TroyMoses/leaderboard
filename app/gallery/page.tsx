@@ -20,8 +20,37 @@ import {
 import { Navigation } from "@/components/navigation";
 import Image from "next/image";
 
+// Types for gallery and video moments
+type GalleryMoment = {
+  id: number;
+  image: string;
+  title: string;
+  description: string;
+  date: string;
+  location: string;
+  likes: number;
+  comments: number;
+  tags: string[];
+  type: "photo";
+};
+
+type VideoMoment = {
+  id: number;
+  video: string;
+  thumbnail: string;
+  title: string;
+  description: string;
+  date: string;
+  location: string;
+  duration: string;
+  likes: number;
+  comments: number;
+  tags: string[];
+  type: "video";
+};
+
 // Dummy data for gallery moments (photos)
-const galleryMoments = [
+const galleryMoments: GalleryMoment[] = [
   {
     id: 1,
     image: "/caleb.jpg",
@@ -30,7 +59,7 @@ const galleryMoments = [
     date: "2025-07-02",
     location: "Rashida Towers, Mabua Road",
     likes: 30,
-    comments: 8,
+    comments: 10,
     tags: ["loss", "bet", "week3"],
     type: "photo",
   },
@@ -146,8 +175,8 @@ export default function GalleryPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <Navigation />
 
-      <div className="pt-20 pb-16">
-        <div className="container mx-auto px-4">
+      <div className="pt-20 pb-16 px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -155,13 +184,13 @@ export default function GalleryPage() {
             transition={{ duration: 0.6 }}
             className="text-center mt-4 mb-12"
           >
-            <h1 className="text-5xl font-bold text-white mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               📸 Run Moments
             </h1>
-            <p className="text-xl text-gray-300 mb-6">
+            <p className="text-lg sm:text-xl text-gray-300 mb-6 px-4">
               Capturing the spirit, sweat, and victories of IntLeaderBoard 25
             </p>
-            <Button className="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3">
+            <Button className="cursor-pointer w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3">
               <Upload className="w-5 h-5 mr-2" />
               Upload New Moment
             </Button>
@@ -172,7 +201,7 @@ export default function GalleryPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-12"
           >
             <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-center">
               <CardContent className="p-4">
@@ -217,7 +246,7 @@ export default function GalleryPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="mb-8"
+            className="mb-8 px-4"
           >
             <Tabs
               value={activeTab}
@@ -227,29 +256,31 @@ export default function GalleryPage() {
               <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 bg-white/10 backdrop-blur-sm border-white/20">
                 <TabsTrigger
                   value="all"
-                  className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-gray-300"
+                  className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-gray-300 text-xs sm:text-sm"
                 >
                   All ({allMoments.length})
                 </TabsTrigger>
                 <TabsTrigger
                   value="photos"
-                  className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-gray-300"
+                  className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-gray-300 text-xs sm:text-sm"
                 >
-                  <ImageIcon className="w-4 h-4 mr-1" />
-                  Photos ({totalStats.photos})
+                  <ImageIcon className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                  <span className="hidden sm:inline">Photos</span> (
+                  {totalStats.photos})
                 </TabsTrigger>
                 <TabsTrigger
                   value="videos"
-                  className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-gray-300"
+                  className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-gray-300 text-xs sm:text-sm"
                 >
-                  <Video className="w-4 h-4 mr-1" />
-                  Videos ({totalStats.videos})
+                  <Video className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                  <span className="hidden sm:inline">Videos</span> (
+                  {totalStats.videos})
                 </TabsTrigger>
               </TabsList>
 
               <TabsContent value={activeTab} className="mt-8">
                 {/* Gallery Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   {filteredMoments.map((moment, index) => (
                     <motion.div
                       key={moment.id}
@@ -267,8 +298,15 @@ export default function GalleryPage() {
                               <Image
                                 src={
                                   moment.type === "video"
-                                    ? (moment as typeof videoMoments[number]).thumbnail
-                                    : (moment as typeof galleryMoments[number]).image || "/placeholder.svg"
+                                    ? typeof moment.thumbnail === "string" &&
+                                      moment.thumbnail
+                                      ? moment.thumbnail
+                                      : "/placeholder.svg"
+                                    : "image" in moment &&
+                                      typeof moment.image === "string" &&
+                                      moment.image
+                                    ? moment.image
+                                    : "/placeholder.svg"
                                 }
                                 alt={moment.title}
                                 width={600}
@@ -361,7 +399,7 @@ export default function GalleryPage() {
                             <Button
                               size="sm"
                               variant="ghost"
-                              className="text-gray-300 hover:text-white"
+                              className="text-gray-300 hover:text-white cursor-pointer"
                             >
                               <Share className="w-4 h-4" />
                             </Button>
@@ -393,61 +431,60 @@ export default function GalleryPage() {
       </div>
 
       {/* Modal for selected media */}
-      {selectedMedia && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedMedia(null)}
-        >
-          <div className="max-w-4xl w-full bg-white/10 backdrop-blur-sm rounded-lg p-6">
-            <div className="text-right mb-4">
-              <Button
-                variant="ghost"
-                onClick={() => setSelectedMedia(null)}
-                className="text-white"
+      {selectedMedia &&
+        (() => {
+          const selectedMoment = allMoments.find((m) => m.id === selectedMedia);
+          if (!selectedMoment) return null;
+          return (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              onClick={() => setSelectedMedia(null)}
+            >
+              <div
+                className="max-w-4xl w-full bg-white/10 backdrop-blur-sm rounded-lg p-4 sm:p-6 max-h-[90vh] overflow-y-auto"
+                onClick={(e) => e.stopPropagation()}
               >
-                ✕
-              </Button>
-            </div>
-            {(() => {
-              const selectedMoment = allMoments.find(
-                (m) => m.id === selectedMedia
-              );
-              if (!selectedMoment) return null;
-
-              // Type guard for video moments
-              function isVideoMoment(
-                moment: typeof allMoments[number]
-              ): moment is typeof videoMoments[number] {
-                return moment.type === "video";
-              }
-
-              return (
+                <div className="text-right mb-4">
+                  <Button
+                    variant="ghost"
+                    onClick={() => setSelectedMedia(null)}
+                    className="text-white cursor-pointer"
+                  >
+                    ✕
+                  </Button>
+                </div>
                 <div>
-                  {isVideoMoment(selectedMoment) ? (
+                  {selectedMoment.type === "video" ? (
                     <video
                       controls
                       className="w-full h-auto rounded-lg mb-4"
-                      poster={selectedMoment.thumbnail}
+                      poster={
+                        (selectedMoment as VideoMoment).thumbnail ||
+                        "/placeholder.svg"
+                      }
                     >
                       <source
-                        src={selectedMoment.video}
+                        src={(selectedMoment as VideoMoment).video}
                         type="video/mp4"
                       />
                       Your browser does not support the video tag.
                     </video>
                   ) : (
                     <Image
-                      src={selectedMoment.image || "/placeholder.svg"}
+                      src={
+                        (selectedMoment as GalleryMoment).image ||
+                        "/placeholder.svg"
+                      }
                       alt={selectedMoment.title}
                       width={800}
                       height={600}
                       className="w-full h-auto rounded-lg mb-4"
                     />
                   )}
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
                     <Badge
                       className={`${
                         selectedMoment.type === "video"
@@ -462,31 +499,32 @@ export default function GalleryPage() {
                       )}
                       {selectedMoment.type.toUpperCase()}
                     </Badge>
-                    {selectedMoment.type === "video" && "duration" in selectedMoment && (
+                    {selectedMoment.type === "video" && (
                       <Badge className="bg-gray-600 text-white">
-                        {selectedMoment.duration}
+                        {(selectedMoment as VideoMoment).duration}
                       </Badge>
                     )}
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 break-words">
                     {selectedMoment.title}
                   </h3>
-                  <p className="text-gray-300 mb-4">
+                  <p className="text-gray-300 mb-4 break-words">
                     {selectedMoment.description}
                   </p>
-                  <div className="flex items-center gap-4 text-sm text-gray-400">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm text-gray-400">
                     <span>
                       {new Date(selectedMoment.date).toLocaleDateString()}
                     </span>
                     <span>•</span>
-                    <span>{selectedMoment.location}</span>
+                    <span className="break-words">
+                      {selectedMoment.location}
+                    </span>
                   </div>
                 </div>
-              );
-            })()}
-          </div>
-        </motion.div>
-      )}
+              </div>
+            </motion.div>
+          );
+        })()}
     </div>
   );
 }
