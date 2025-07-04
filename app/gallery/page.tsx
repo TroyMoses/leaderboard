@@ -172,7 +172,7 @@ export default function GalleryPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 mx-auto max-w-7xl">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 mx-auto max-w-7xl md:max-w-full">
       <Navigation />
 
       <div className="pt-20 pb-16 px-2 md:px-4">
