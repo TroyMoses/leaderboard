@@ -53,18 +53,18 @@ const dummyRunners = [
   },
   {
     id: 5,
-    name: "Brennan Baingana",
+    name: "Caleb",
     position: 5,
     score: 75,
-    avatar: "🏃‍♂️",
+    avatar: "🏃‍♀️",
     streak: 0,
   },
   {
     id: 6,
-    name: "Caleb",
+    name: "Brennan Baingana",
     position: 6,
-    score: 72,
-    avatar: "🏃‍♀️",
+    score: 70,
+    avatar: "🏃‍♂️",
     streak: 0,
   },
 ];
