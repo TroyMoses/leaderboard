@@ -23,47 +23,47 @@ const dummyRunners = [
     id: 1,
     name: "Troy Legacy",
     position: 1,
-    score: 95,
+    score: 190,
     avatar: "🏃‍♂️",
-    streak: 3,
+    streak: 4,
   },
   {
     id: 2,
-    name: "Daniel Magero",
+    name: "Daniel Astrav",
     position: 2,
-    score: 88,
+    score: 166,
     avatar: "🏃‍♀️",
-    streak: 3,
+    streak: 0,
   },
   {
     id: 3,
     name: "Denis Hacker",
     position: 3,
-    score: 82,
+    score: 164,
     avatar: "🏃‍♂️",
     streak: 2,
   },
   {
     id: 4,
-    name: "Daniel Astrav",
+    name: "Caleb",
     position: 4,
-    score: 78,
+    score: 153,
     avatar: "🏃‍♀️",
     streak: 0,
   },
   {
     id: 5,
-    name: "Caleb",
+    name: "Justine",
     position: 5,
-    score: 75,
+    score: 130,
     avatar: "🏃‍♀️",
-    streak: 0,
+    streak: 2,
   },
   {
     id: 6,
-    name: "Brennan Baingana",
-    position: 6,
-    score: 70,
+    name: "Mercy",
+    position: 7,
+    score: 75,
     avatar: "🏃‍♂️",
     streak: 0,
   },
@@ -119,19 +119,18 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-medium mb-6"
             >
               <Zap className="w-3 h-3 sm:w-4 sm:h-4" />
-              Week 3 Results Are In!
+              Week 5 Results Are In!
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
               <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                IntLeaderBoard 25&#39;
+                LOWER LEAGUE IN SHOCK!
               </span>
               <br />
             </h1>
 
-            <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed px-4">
-              Where every Wednesday run counts. Track your progress, challenge
-              your teammates, and climb the ultimate jogging leaderboard.
+            <p className="text-base sm:text-lg text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed px-4">
+              Last evening, the post-5PM air was charged with anticipation, sweat, and the occasional sound of heavy breathing — and not for the reasons you might think. What started as a routine jog evolved into an action-packed race.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
@@ -144,14 +143,14 @@ export default function HomePage() {
                   View Leaderboard
                 </Button>
               </Link>
-              <Link href="/agreements">
+              <Link href="/gallery">
                 <Button
                   size="lg"
                   variant="outline"
                   className="cursor-pointer w-full sm:w-auto border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-6 sm:px-8 py-3 text-base sm:text-lg bg-transparent"
                 >
-                  <Target className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  Make a Bet
+                  <Camera className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                  View Gallery
                 </Button>
               </Link>
             </div>

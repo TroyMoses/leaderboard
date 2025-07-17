@@ -190,10 +190,10 @@ export default function GalleryPage() {
             <p className="text-lg sm:text-xl text-gray-300 mb-6 px-4">
               Capturing the spirit, sweat, and victories of IntLeaderBoard 25
             </p>
-            <Button className="cursor-pointer w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3">
+            {/* <Button className="cursor-pointer w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3">
               <Upload className="w-5 h-5 mr-2" />
               Upload New Moment
-            </Button>
+            </Button> */}
           </motion.div>
 
           {/* Stats Bar */}

@@ -18,7 +18,7 @@ import {
 const navItems = [
   { href: "/", label: "Home", icon: Trophy },
   { href: "/leaderboard", label: "Leaderboard", icon: Users },
-  { href: "/agreements", label: "Agreements", icon: Handshake },
+  // { href: "/agreements", label: "Agreements", icon: Handshake },
   { href: "/gallery", label: "Gallery", icon: Camera },
 ];
 
@@ -59,14 +59,14 @@ export function Navigation() {
                 </Link>
               );
             })}
-            <Button
+            {/* <Button
               variant="outline"
               size="sm"
               className="cursor-pointer ml-4 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent"
             >
               <Settings className="w-4 h-4 mr-2" />
               Admin
-            </Button>
+            </Button> */}
           </div>
 
           {/* Mobile Menu Button */}

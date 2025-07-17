@@ -23,71 +23,71 @@ const allRunners = [
     id: 1,
     name: "Troy Legacy",
     position: 1,
-    score: 95,
+    score: 190,
     avatar: "🏃‍♂️",
-    streak: 3,
+    streak: 4,
     lastWeekPosition: 1,
-    totalRuns: 3,
+    totalRuns: 4,
   },
   {
     id: 2,
-    name: "Daniel Magero",
+    name: "Daniel Astrav",
     position: 2,
-    score: 88,
+    score: 166,
     avatar: "🏃‍♀️",
-    streak: 3,
-    lastWeekPosition: 2,
+    streak: 0,
+    lastWeekPosition: 4,
     totalRuns: 3,
   },
   {
     id: 3,
     name: "Denis Hacker",
     position: 3,
-    score: 82,
+    score: 164,
     avatar: "🏃‍♂️",
     streak: 2,
-    lastWeekPosition: 4,
+    lastWeekPosition: 3,
     totalRuns: 3,
   },
   {
     id: 4,
-    name: "Daniel Astrav",
+    name: "Caleb",
     position: 4,
-    score: 78,
+    score: 153,
     avatar: "🏃‍♀️",
     streak: 0,
-    lastWeekPosition: 10,
+    lastWeekPosition: 5,
     totalRuns: 3,
   },
   {
     id: 5,
-    name: "Caleb",
+    name: "Justine",
     position: 5,
-    score: 75,
+    score: 130,
     avatar: "🏃‍♀️",
-    streak: 0,
-    lastWeekPosition: 12,
-    totalRuns: 2,
+    streak: 2,
+    lastWeekPosition: 7,
+    totalRuns: 3,
   },
   {
     id: 6,
-    name: "Brennan Baingana",
+    name: "Daniel Magero",
     position: 6,
-    score: 70,
+    score: 88,
+    avatar: "🏃‍♂️",
+    streak: 3,
+    lastWeekPosition: 2,
+    totalRuns: 3,
+  },
+  {
+    id: 7,
+    name: "Mercy",
+    position: 7,
+    score: 75,
     avatar: "🏃‍♂️",
     streak: 0,
     lastWeekPosition: 0,
     totalRuns: 1,
-  },
-  {
-    id: 7,
-    name: "Justine",
-    position: 7,
-    score: 60,
-    avatar: "🏃‍♀️",
-    streak: 0,
-    lastWeekPosition: 14,
-    totalRuns: 2,
   },
   {
     id: 8,
@@ -365,7 +365,7 @@ export default function LeaderboardPage() {
           </motion.div>
 
           {/* Admin Update Button */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.6 }}
@@ -374,7 +374,7 @@ export default function LeaderboardPage() {
             <Button className="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3">
               Update Positions (Admin Only)
             </Button>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </div>
