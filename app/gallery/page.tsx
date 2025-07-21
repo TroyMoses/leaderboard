@@ -11,7 +11,6 @@ import {
   Heart,
   MessageCircle,
   Share,
-  Upload,
   MapPin,
   Play,
   Video,

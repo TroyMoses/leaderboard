@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import {
   Trophy,
   Users,
-  Handshake,
   Camera,
   Menu,
   X,
