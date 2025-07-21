@@ -130,7 +130,7 @@ export default function HomePage() {
             </h1>
 
             <p className="text-base sm:text-lg text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed px-4">
-              Last evening, the post-5PM air was charged with anticipation, sweat, and the occasional sound of heavy breathing — and not for the reasons you might think. What started as a routine jog evolved into an action-packed race.
+              Last Wednesday, the post-5PM air was charged with anticipation, sweat, and the occasional sound of heavy breathing — and not for the reasons you might think. What started as a routine jog evolved into an action-packed race.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
