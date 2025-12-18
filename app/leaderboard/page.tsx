@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import {
   Trophy,
@@ -20,88 +19,88 @@ import { Navigation } from "@/components/navigation";
 // Extended dummy data for all runners
 const allRunners = [
   {
-    id: 1,
-    name: "Troy Legacy",
+    id: 2,
+    name: "Daniel Magero",
     position: 1,
-    score: 95,
+    score: 200,
     avatar: "🏃‍♂️",
     streak: 3,
-    lastWeekPosition: 1,
-    totalRuns: 3,
+    lastWeekPosition: 0,
+    totalRuns: 4,
   },
   {
     id: 2,
-    name: "Daniel Magero",
+    name: "Troy Legacy",
     position: 2,
-    score: 88,
-    avatar: "🏃‍♀️",
-    streak: 3,
-    lastWeekPosition: 2,
-    totalRuns: 3,
+    score: 190,
+    avatar: "🏃‍♂️",
+    streak: 4,
+    lastWeekPosition: 0,
+    totalRuns: 4,
   },
   {
     id: 3,
-    name: "Denis Hacker",
+    name: "Daniel Astrav",
     position: 3,
-    score: 82,
-    avatar: "🏃‍♂️",
-    streak: 2,
-    lastWeekPosition: 4,
+    score: 166,
+    avatar: "🏃‍♀️",
+    streak: 0,
+    lastWeekPosition: 0,
     totalRuns: 3,
   },
   {
     id: 4,
-    name: "Daniel Astrav",
+    name: "Denis Hacker",
     position: 4,
-    score: 78,
-    avatar: "🏃‍♀️",
-    streak: 0,
-    lastWeekPosition: 10,
+    score: 164,
+    avatar: "🏃‍♂️",
+    streak: 2,
+    lastWeekPosition: 0,
     totalRuns: 3,
   },
   {
     id: 5,
     name: "Caleb",
     position: 5,
-    score: 75,
+    score: 153,
     avatar: "🏃‍♀️",
     streak: 0,
-    lastWeekPosition: 12,
-    totalRuns: 2,
+    lastWeekPosition: 0,
+    totalRuns: 3,
   },
   {
     id: 6,
-    name: "Brennan Baingana",
+    name: "Justine",
     position: 6,
-    score: 70,
-    avatar: "🏃‍♂️",
-    streak: 0,
+    score: 130,
+    avatar: "🏃‍♀️",
+    streak: 2,
     lastWeekPosition: 0,
-    totalRuns: 1,
+    totalRuns: 3,
   },
   {
     id: 7,
-    name: "Justine",
+    name: "Daniel Magero",
     position: 7,
-    score: 60,
-    avatar: "🏃‍♀️",
-    streak: 0,
-    lastWeekPosition: 14,
-    totalRuns: 2,
+    score: 88,
+    avatar: "🏃‍♂️",
+    streak: 3,
+    lastWeekPosition: 0,
+    totalRuns: 3,
   },
   {
     id: 8,
-    name: "Shahid",
+    name: "Mercy",
     position: 8,
-    score: 0,
-    avatar: "🏃‍♀️",
+    score: 75,
+    avatar: "🏃‍♂️",
     streak: 0,
-    lastWeekPosition: 0,
-    totalRuns: 0,
+    lastWeekPosition: 7,
+    totalRuns: 1,
   },
   {
     id: 9,
-    name: "Iqra",
+    name: "Shahid",
     position: 9,
     score: 0,
     avatar: "🏃‍♀️",
@@ -111,7 +110,7 @@ const allRunners = [
   },
   {
     id: 10,
-    name: "Nina",
+    name: "Iqra",
     position: 10,
     score: 0,
     avatar: "🏃‍♀️",
@@ -121,7 +120,7 @@ const allRunners = [
   },
   {
     id: 11,
-    name: "Mercy",
+    name: "Nina",
     position: 11,
     score: 0,
     avatar: "🏃‍♀️",
@@ -131,8 +130,18 @@ const allRunners = [
   },
   {
     id: 12,
-    name: "Hannah",
+    name: "Mercy",
     position: 12,
+    score: 0,
+    avatar: "🏃‍♀️",
+    streak: 0,
+    lastWeekPosition: 0,
+    totalRuns: 0,
+  },
+  {
+    id: 13,
+    name: "Hannah",
+    position: 13,
     score: 0,
     avatar: "🏃‍♀️",
     streak: 0,
@@ -365,7 +374,7 @@ export default function LeaderboardPage() {
           </motion.div>
 
           {/* Admin Update Button */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.6 }}
@@ -374,7 +383,7 @@ export default function LeaderboardPage() {
             <Button className="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3">
               Update Positions (Admin Only)
             </Button>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </div>
